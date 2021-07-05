@@ -3,7 +3,9 @@ import './App.css';
 import Header from './Components/Header';
 import Todos from './Components/Todos';
 import Footer from './Components/Footer';
+import AddTodos from './Components/AddTodos';
 import {useState} from 'react';
+
 
 function App() {
   const deletetodos=(todo)=>{
@@ -32,9 +34,20 @@ function App() {
       desc:"this will be used to develop back end "
     }
   ]);
-
+ const addtodos=(title,desc)=>{
+   console.log(title,desc);
+   let id=todosarray[todosarray.length-1]+1;
+  const mytodo={
+    id:id,
+    title :title,
+    desc:desc
+  }
+  console.log(mytodo);
+  settodos([...todosarray,mytodo])
+ }
   return <div> 
     <Header title="Todos List" />
+    <AddTodos addtodo={addtodos}/>
     <Todos todo={todosarray} onDelete={deletetodos} />
     <Footer />
     </div>
