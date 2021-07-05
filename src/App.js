@@ -3,15 +3,19 @@ import './App.css';
 import Header from './Components/Header';
 import Todos from './Components/Todos';
 import Footer from './Components/Footer';
+import {useState} from 'react';
 
 function App() {
   const deletetodos=(todo)=>{
-    console.log("i am on delete");
-    let index=todosarray.indexOf(todo);
-    todosarray.splice(index,1);
+    console.log("i am on delete",todo);
+    // let index=todosarray.indexOf(todo);
+    // todosarray.splice(index,1);
+    settodos(todosarray.filter((e)=>{
+      return e!==todo;
+    }))
   }
    
-  let todosarray=[
+  const [todosarray,settodos]=useState([
     {
       id:1,
       title:"go to the market",
@@ -27,7 +31,7 @@ function App() {
       title:"Start learning Spring_boot",
       desc:"this will be used to develop back end "
     }
-  ]
+  ]);
 
   return <div> 
     <Header title="Todos List" />
